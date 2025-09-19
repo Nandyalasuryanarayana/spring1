@@ -3,6 +3,7 @@ on:
   pull_request:   
         branches: 
             main
+          workflowdispatch
 jobs:
     job1:
         runs-on: ubuntu-latest
@@ -24,9 +25,10 @@ jobs:
               uses: github/codeql-action/init@v3
               with:
                 languages: java
-
             - name: setup jre
               run: mvn package
+            - name: codeql action
+              uses: github/codeql-action/analyze@v3
             - name: run tests
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
@@ -37,6 +39,7 @@ jobs:
               with:
                 name: app-java-${{matrix.java}}
                 path: "**/target/*.jar"
+            
               
 
             

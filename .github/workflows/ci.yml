@@ -3,7 +3,7 @@ on:
   pull_request:   
         branches: 
             main
-          workflowdispatch
+  workflow_dispatch:
 jobs:
     job1:
         runs-on: ubuntu-latest

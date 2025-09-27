@@ -16,4 +16,5 @@ jobs:
                 distribution: 'temurin'
                 java-version: '21'
                 cache: java
+            - run: sudo apt update && sudo apt install maven
             - run: mvn package

@@ -9,7 +9,11 @@ jobs:
         runs-on: ubuntu-22.04
         steps:
             - name: david
-              env:
-                  java: 17
               uses: actions/checkout@v5
+            - name: java setup
+              uses: actions/setup-java@v5
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+                cache: mvn
             - run: mvn package

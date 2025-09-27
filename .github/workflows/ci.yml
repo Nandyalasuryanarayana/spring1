@@ -15,5 +15,5 @@ jobs:
               with:
                 distribution: 'temurin'
                 java-version: '17'
-                cache: mvn
+                cache: java
             - run: mvn package

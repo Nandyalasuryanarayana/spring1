@@ -13,5 +13,5 @@ jobs:
               with:
                    distribution: 'temurin' # See 'Supported distributions' for available options
                    java-version: '21'
-                   cache: maven a
+                   cache: maven 
             - run: mvn package

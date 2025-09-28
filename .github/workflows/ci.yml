@@ -4,20 +4,28 @@ on:
         branches: 
             main
     workflow_dispatch:
+env:
+    buildcommand: mvn package
 jobs:
     job:
         runs-on: ubuntu-22.04
         steps:
             - name: copy code 
               uses: actions/checkout@v5
+            - name: initialize codeql
+              uses: github/codeql-action/init@v3
+              with:
+                languages: java
             - name: setup java
               uses: actions/setup-java@v5
               with:
                    distribution: 'temurin' 
                    java-version: '21'
                    cache: maven 
-            - run: mvn package
-            - name: Publish Test Results
+            - run: ${{ env.buildcommand }}
+            - name: perform quality analyses
+              uses: github/codeql-action/analyze@v3
+            - name: publish tests
               uses: EnricoMi/publish-unit-test-result-action@v2
               with:
                 files: |

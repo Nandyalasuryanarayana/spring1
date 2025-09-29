@@ -26,9 +26,8 @@ jobs:
               with: 
                  version: latest
               env:
-                  jf_url: ${{ vars.JF_URL }}\
-                  jf_action_token: ${{ secrets.JFROGTOKEN }}\
-            - name: check jfrog
+                  jf_url: ${{ vars.JF_URL }}
+                  jf_action_token: ${{ secrets.JFROGTOKEN }}
             - run: |
                  jf --version
                  jf rt ping

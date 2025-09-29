@@ -23,8 +23,7 @@ jobs:
                    java-version: '21'
                    cache: maven 
             - uses: jfrog/setup-jfrog-cli@v4
-            - run: |
-                  jf rt c add my-server \
+              env: 
                   --url: ${{ vars.JF_URL }}\
                   --access-tocken: ${{ secrets.JFROGTOKEN }}\
             - run: |

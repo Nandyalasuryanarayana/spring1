@@ -49,6 +49,6 @@ jobs:
             - name: Build and deploy with Maven
               run: |
                  jf mvn-config --repo-deploy-releases=learning-libs-release --repo-deploy-snapshots=learning-libs-deploy
-                 jf mvn deploy
+                 jf mvn clean install deploy
                  --build-name my-build \
                  --build-number $GITHUB_RUN_NUMBER

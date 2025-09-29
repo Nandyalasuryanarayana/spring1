@@ -25,12 +25,11 @@ jobs:
             - uses: jfrog/setup-jfrog-cli@v4
               with: 
                  version: latest
-              env:
-                  jf_url: ${{ vars.JF_URL }}
-                  jf_action_token: ${{ secrets.JFROGTOKEN }}
             - run: |
-                 jf --version
-                 jf rt ping
+                  jf --version
+                  jf rt ping
+                  --url : ${{ vars.JF_URL }} \
+                  --access-token: ${{ secrets.JFROGTOKEN }}
             - run: ${{ env.buildcommand }}
             - name: perform quality analyses
               uses: github/codeql-action/analyze@v3

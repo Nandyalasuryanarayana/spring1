@@ -41,3 +41,10 @@ jobs:
                 name: java-petclinic-artifact
                 path: |
                     **/target/*.jar
+            - name: Build and deploy with Maven
+              run: |
+                 jfrog rt mvn "clean install deploy" \
+                 --server-id-resolve my-jfrog-server \
+                 --server-id-deploy my-jfrog-server \
+                 --build-name my-build \
+                 --build-number $GITHUB_RUN_NUMBER

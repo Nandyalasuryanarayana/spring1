@@ -46,12 +46,16 @@ jobs:
                 name: java-petclinic-artifact
                 path: |
                     **/target/*.jar
-            - name: Build and deploy with Maven
+            - name: config jfrog
               run: |
                  jf mvn-config \
+                 --server-id-resolve learning-libs-release \
+                 --server-id-deploy learning-libs-snapshot \
+                 --interactive=false
+            - name: Build and deploy with Maven
+              run: |
                  jfrog rt mvn "clean install deploy" \
                  --server-id-resolve learning-libs-release \
                  --server-id-deploy learning-libs-snapshot \
                  --build-name my-build \
                  --build-number $GITHUB_RUN_NUMBER
-                 --interactive=false

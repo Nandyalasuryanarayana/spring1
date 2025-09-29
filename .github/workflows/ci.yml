@@ -49,6 +49,8 @@ jobs:
             - name: config jfrog
               run: |
                  jf mvn-config \
+                 --server-id-resolve=jfrog1 \
+                 --server-id-deploy=jfrog1 \
                  --repo-resolve=learning-libs-release \
                  --repo-deploy=learning-libs-snapshot 
             - name: Build and deploy with Maven

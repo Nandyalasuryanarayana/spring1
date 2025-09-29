@@ -48,7 +48,7 @@ jobs:
                     **/target/*.jar
             - name: Build and deploy with Maven
               run: |
-                 jfrog config mvn \
+                 jfrog config \
                  jfrog rt mvn "clean install deploy" \
                  --server-id-resolve learning-libs-release \
                  --server-id-deploy learning-libs-snapshot \

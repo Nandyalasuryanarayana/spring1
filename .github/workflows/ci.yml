@@ -44,7 +44,7 @@ jobs:
             - name: Build and deploy with Maven
               run: |
                  jfrog rt mvn "clean install deploy" \
-                 --server-id-resolve my-jfrog-server \
-                 --server-id-deploy my-jfrog-server \
+                 --server-id-resolve learning-libs-release \
+                 --server-id-deploy learning-libs-snapshot \
                  --build-name my-build \
                  --build-number $GITHUB_RUN_NUMBER

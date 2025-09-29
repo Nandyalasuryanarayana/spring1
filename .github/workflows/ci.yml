@@ -54,3 +54,4 @@ jobs:
                  --server-id-deploy learning-libs-snapshot \
                  --build-name my-build \
                  --build-number $GITHUB_RUN_NUMBER
+                 --interactive=false

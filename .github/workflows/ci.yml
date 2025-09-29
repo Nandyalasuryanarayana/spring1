@@ -49,8 +49,8 @@ jobs:
             - name: config jfrog
               run: |
                  jf mvn-config \
-                 --repo-resolve learning-libs-release \
-                 --repo-deploy learning-libs-snapshot 
+                 --repo-resolve=learning-libs-release \
+                 --repo-deploy=learning-libs-snapshot 
             - name: Build and deploy with Maven
               run: |
                  jfrog rt mvn "clean install deploy" \

@@ -46,9 +46,20 @@ jobs:
                 name: java-petclinic-artifact
                 path: |
                     **/target/*.jar
+            - name: Configure JFrog CLI
+              run: |
+                 jf c add jfrog1 \
+                 --url=${{ vars.JF_URL }} \
+                 --access-token=${{ secrets.JFROGTOKEN }} \
+                 --interactive=false
             - name: Build and deploy with Maven
               run: |
-                 jf mvn-config --repo-deploy-releases=learning-libs-release --repo-deploy-snapshots=learning-libs-deploy
+                jf mvn-config \
+                --server-id-resolve=jfrog1 \
+                --server-id-deploy=jfrog1 \
+                --repo-resolve-releases=learning-libs-release \
+                --repo-resolve-snapshots=learning-libs-snapshot \
+                --repo-deploy-releases=learning-libs-release \
+                --repo-deploy-snapshots=learning-libs-snapshot
                  jf mvn clean install deploy
-                 --build-name my-build \
-                 --build-number $GITHUB_RUN_NUMBER
+

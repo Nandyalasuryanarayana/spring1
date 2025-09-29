@@ -23,7 +23,9 @@ jobs:
                    java-version: '21'
                    cache: maven 
             - uses: jfrog/setup-jfrog-cli@v4
-                    # + Authentication method
+              env:
+                  jfurl: ${{ vars.jfrogurl }}
+                  JF_ACCESS_TOKEN: ${{ secrets.jfrogtoken }}
             - run: jf --version
             - run: ${{ env.buildcommand }}
             - name: perform quality analyses

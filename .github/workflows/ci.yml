@@ -23,9 +23,12 @@ jobs:
                    java-version: '21'
                    cache: maven 
             - uses: jfrog/setup-jfrog-cli@v4
-              env: 
-                  --url: ${{ vars.JF_URL }}\
-                  --access-tocken: ${{ secrets.JFROGTOKEN }}\
+              with: 
+                 version: latest
+              env:
+                  jf_url: ${{ vars.JF_URL }}\
+                  jf_action_token: ${{ secrets.JFROGTOKEN }}\
+            - name: check jfrog
             - run: |
                  jf --version
                  jf rt ping

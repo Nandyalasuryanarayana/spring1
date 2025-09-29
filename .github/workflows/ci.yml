@@ -24,8 +24,8 @@ jobs:
                    cache: maven 
             - uses: jfrog/setup-jfrog-cli@v4
               env:
-                  jfurl: ${{ vars.jfrogurl }}
-                  JF_ACCESS_TOKEN: ${{ secrets.jfrogtoken }}
+                  jfurl: ${{ vars.JFURL }}
+                  JF_ACCESS_TOKEN: ${{ secrets.JFROGTOKEN }}
             - run: jf --version
             - run: ${{ env.buildcommand }}
             - name: perform quality analyses
